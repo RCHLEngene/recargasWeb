@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/lnLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="245dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:text="INICIAR SESIÓN"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="349dp"
+                android:layout_height="107dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@mipmap/login1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="24dp"
+                android:text="Usuario"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etUser"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:hint="ej: Su_primer_Nombre@wposs.com"
+                android:inputType="textPersonName"
+                android:textColorHint="#45DFDFDF" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="30dp"
+                android:text="Contraseña"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPass"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="24dp"
+                android:autoText="false"
+                android:ems="10"
+                android:hint="ej: 12345678"
+                android:inputType="textPassword"
+                android:textColorHint="#45DFDFDF"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="100dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="140dp"
+                android:layout_height="wrap_content"
+                android:text="Iniciar" />
+
+            <TextView
+                android:id="@+id/etNewAcount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:text="Crear una cuenta"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
