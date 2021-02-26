@@ -21,11 +21,10 @@
 
     <TextView
         android:id="@+id/tvUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_marginTop="76dp"
+        android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +105,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="ingrese el valor a recargar"
+        android:hint="ej: 5000"
         android:inputType="number"
         android:textColorHint="#45DFDFDF"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +119,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:text="CONFIME EL VALOR A RECARGAR"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etVal" />
 
@@ -131,10 +131,9 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="confime el valor a recargar"
+        android:hint="ej: 5000"
         android:inputType="number"
         android:textColorHint="#45DFDFDF"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 

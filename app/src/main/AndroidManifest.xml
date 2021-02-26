@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecargasWeb">
-        <activity android:name=".recarga"></activity>
+        <activity android:name=".historial"></activity>
+        <activity android:name=".recarga" />
         <activity android:name=".register" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -3,6 +3,8 @@ package com.example.recargasweb;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -39,6 +41,7 @@ public class register extends AppCompatActivity {
         spDoc.setAdapter(adapter);
 
         SQLitedb db=new SQLitedb(getApplicationContext());
+        SQLiteDatabase bd = db.getWritableDatabase();
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,21 +55,33 @@ public class register extends AppCompatActivity {
                 }else{
                     String p1=et1Pass.getText().toString();
                     String p2=etPassCon.getText().toString();
-                    if((p1.equals(p2)) && et1Pass.getText().toString().length()>7 || etPassCon.getText().toString().length()>7) {
+                    if((p1.equals(p2)) && (et1Pass.getText().toString().length()>7 && etPassCon.getText().toString().length()>7)) {
 
-                        db.registrarCuenta(etNom.getText().toString(), spDoc.getSelectedItem().toString(), etDoc.getText().toString(), et1Pass.getText().toString());
-                        Snackbar mySnackbar = Snackbar.make(findViewById(R.id.lnLayout), "La cuenta ha sido creada con éxito!", Snackbar.LENGTH_LONG);
-                        mySnackbar.setAction("Ocultar", new View.OnClickListener() { @Override public void onClick(View v) { mySnackbar.dismiss(); } });
-                        mySnackbar.show();
-                        new Timer().schedule(new TimerTask() {
-                            @Override
-                            public void run() {
+                        Cursor c=bd.rawQuery("SELECT count(*) FROM users WHERE num_doc='"+etDoc.getText().toString()+"'",null);
+                        if(c.moveToFirst()){
+                            Snackbar mySnackbar = Snackbar.make(findViewById(R.id.lnLayout), "Ya existe una cuenta con esta\nidentificación!", Snackbar.LENGTH_LONG);
+                            mySnackbar.setAction("Ocultar", new View.OnClickListener() { @Override public void onClick(View v) { mySnackbar.dismiss(); } });
+                            mySnackbar.show();
+                        }else {
+                            db.registrarCuenta(etNom.getText().toString(), spDoc.getSelectedItem().toString(), etDoc.getText().toString(), et1Pass.getText().toString());
+                            Snackbar mySnackbar = Snackbar.make(findViewById(R.id.lnLayout), "La cuenta ha sido creada con éxito!", Snackbar.LENGTH_LONG);
+                            mySnackbar.setAction("Ocultar", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mySnackbar.dismiss();
+                                }
+                            });
+                            mySnackbar.show();
+                            new Timer().schedule(new TimerTask() {
+                                @Override
+                                public void run() {
 
-                                Intent k= new Intent(getApplicationContext(),MainActivity.class);
-                                startActivity(k);
-                                finish();
-                            }
-                        }, 3000);
+                                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(k);
+                                    finish();
+                                }
+                            }, 1500);
+                        }
                     }else{
                         Snackbar mySnackbar = Snackbar.make(findViewById(R.id.lnLayout), "Las contraseñas no coinciden o la longitud de la(s) contraseñas es invalido!", Snackbar.LENGTH_LONG);
                         mySnackbar.setAction("Ocultar", new View.OnClickListener() { @Override public void onClick(View v) { mySnackbar.dismiss(); } });

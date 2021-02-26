@@ -66,7 +66,7 @@ public class recarga extends AppCompatActivity {
                         float val1=Float.parseFloat(etVal.getText().toString());
                         float val2=Float.parseFloat(etValCon.getText().toString());
                         if(val1==val2 && (val1>0 && val2>0) ){
-                                admin.registrarRecarga(etPhone.getText().toString(),val1,op);
+                                admin.registrarRecarga(etPhone.getText().toString(),val1,op,bundle.getString("usuario"));
                             Snackbar mySnackbar = Snackbar.make(findViewById(R.id.lnLayout1), "La recarga fue realizada con exito...", Snackbar.LENGTH_LONG);
                             mySnackbar.show();
                             etValCon.setText("");
@@ -76,8 +76,9 @@ public class recarga extends AppCompatActivity {
                             spOperador.setSelection(0);
                             mySnackbar = Snackbar.make(findViewById(R.id.lnLayout1), "Ver historial de recargas", Snackbar.LENGTH_LONG);
                             mySnackbar.setAction("Ver", new View.OnClickListener() { @Override public void onClick(View v) {
-                                Intent i=new Intent(getApplicationContext(),register.class);
+                                Intent i=new Intent(getApplicationContext(),historial.class);
                                 //inicar la nueva ventana
+                                i.putExtra("usuario",bundle.getString("usuario"));
                                 startActivity(i);
                             } });
                             mySnackbar.show();

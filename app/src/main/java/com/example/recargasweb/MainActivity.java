@@ -52,13 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 SQLiteDatabase bd = admin.getWritableDatabase();
 
                 //declarar el metodo cursor, metodo que almacena el resultado de la consulta sql
-                Cursor c=bd.rawQuery("SELECT nom FROM users WHERE mail='"+user+"' and pass='"+pass+"'",null);
+                Cursor c=bd.rawQuery("SELECT nom,NUM_DOC FROM users WHERE mail='"+user+"' and pass='"+pass+"'",null);
 
                 if(c.moveToFirst()){
                     String nom=c.getString(0);
+                    String usuario=c.getString(1);
                     //invocar a una nueva ventana llamada recarga
                     Intent l= new Intent(getApplicationContext(),recarga.class);
                     l.putExtra("user",String.valueOf(nom));//pasar a la nueva venta la variable nombre,la cual almacena elnombre del usuario
+                    l.putExtra("usuario",String.valueOf(usuario));//pasar a la nueva venta la variable usuario,la cual almacena el user del usuario
                     startActivity(l);//llamar a la nueva ventana
                     finish();
                 }else{
